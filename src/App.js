@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import Quotebox from './components/Quotebox';
+import Container from 'react-bootstrap/Button';
+import './App.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      text: '',
+      author: ''
+    };
+  }
+
+ componentDidMount(){
+  this.getQuote();
+ }
+
+  getQuote = () => {
+    fetch("https://programming-quotes-api.herokuapp.com/quotes/random")
+
+    .then(response => response.json())
+
+    .then(data => {
+      console.log(data)
+      this.setState({author: data.author})
+      this.setState({text: data.en})
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+
+  render() {
+    return (
+      <div className="App Container mx-auto mt-5 pt-5 bg-light" style={{width: '70vw', height: '90vh', fontFamily: 'monospace' }}>
+        <h1 className="">Awesome random programmer quotes</h1>
+        <Quotebox onClick={this.getQuote} text={this.state.text} author={this.state.author} tweet={this.state.tweet}/>
+      </div>
+    );
+  }
 }
 
 export default App;
