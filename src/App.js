@@ -34,9 +34,11 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App Container mx-auto mt-5 pt-5 bg-light" style={{width: '70vw', height: '90vh', fontFamily: 'monospace' }}>
-        <h1 className="">Awesome random programmer quotes</h1>
-        <Quotebox onClick={this.getQuote} text={this.state.text} author={this.state.author} tweet={this.state.tweet}/>
+      <div className="App pt-5" style={{minHeight: '100vh'}}>
+        <main className="Container" >
+          <h1 className="">Awesome random programmer quotes</h1>
+          <Quotebox onClick={this.getQuote} text={this.state.text} author={this.state.author} tweet={this.state.tweet}/>
+        </main>
       </div>
     );
   }
