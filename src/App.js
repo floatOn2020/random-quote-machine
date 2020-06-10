@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Quotebox from './components/Quotebox';
 import Container from 'react-bootstrap/Button';
 import './App.scss';
+import Media from 'react-media';
 
 
 class App extends Component {
@@ -36,7 +37,7 @@ class App extends Component {
     return (
       <div className="App pt-5" style={{minHeight: '100vh'}}>
         <main className="Container" >
-          <h1 className="">Awesome random programmer quotes</h1>
+          <h1 className="">Random programmer quotes</h1>
           <Quotebox onClick={this.getQuote} text={this.state.text} author={this.state.author} tweet={this.state.tweet}/>
         </main>
       </div>
